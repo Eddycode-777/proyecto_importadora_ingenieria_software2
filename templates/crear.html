@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}Crear Producto{% endblock %}
+
+{% block content %}
+<h2>🆕 Crear nuevo producto</h2>
+
+<div class="form-card">
+    <form method="POST" action="{{ url_for('productos.crear') }}">
+        <div class="campo">
+            <label for="nombre">Nombre *</label>
+            <input type="text" id="nombre" name="nombre" required maxlength="100" placeholder="Ej: Globos metálicos x50">
+        </div>
+        <div class="campo">
+            <label for="descripcion">Descripción</label>
+            <input type="text" id="descripcion" name="descripcion" maxlength="255" placeholder="Descripción breve del producto">
+        </div>
+        <div class="campo">
+            <label for="precio">Precio (S/) *</label>
+            <input type="number" id="precio" name="precio" step="0.01" min="0.01" required placeholder="0.00">
+        </div>
+        <div class="campo">
+            <label for="stock">Stock *</label>
+            <input type="number" id="stock" name="stock" min="0" required placeholder="0">
+        </div>
+        <div class="campo">
+            <label for="categoria">Categoría</label>
+            <select id="categoria" name="categoria">
+                <option value="">-- Seleccione una categoría --</option>
+                <option value="Globos y decoraciones">Globos y decoraciones</option>
+                <option value="Piñatas">Piñatas</option>
+                <option value="Cotillón">Cotillón</option>
+                <option value="Vajilla desechable">Vajilla desechable</option>
+                <option value="Disfraces y accesorios">Disfraces y accesorios</option>
+                <option value="Velas y cake toppers">Velas y cake toppers</option>
+                <option value="Serpentinas y confeti">Serpentinas y confeti</option>
+                <option value="Luces y efectos">Luces y efectos</option>
+                <option value="Artículos temáticos">Artículos temáticos</option>
+                <option value="Empaque y bolsas">Empaque y bolsas</option>
+            </select>
+        </div>
+        <div class="campo-acciones">
+            <button type="submit" class="btn btn-primary">Guardar producto</button>
+            <a href="{{ url_for('productos.index') }}" class="btn">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

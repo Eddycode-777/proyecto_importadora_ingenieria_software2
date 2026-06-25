@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>IMPORCOM S.R.L — {% block title %}Sistema de Productos{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header>
+    <h1>IMPORCOM S.R.L</h1>
+    <p style="font-size:0.85rem; color:#555; margin-top:2px;">Importadora de Artículos de Fiestas</p>
+    <nav>
+        <a href="{{ url_for('productos.index') }}">Inicio</a>
+        <a href="{{ url_for('productos.crear') }}">Nuevo Producto</a>
+    </nav>
+</header>
+
+<main>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for cat, msg in messages %}
+            <p class="mensaje {{ cat }}">{{ msg }}</p>
+        {% endfor %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+</main>
+
+<footer>
+    <p>Sistema de Gestión — Importadora Fiestas</p>
+</footer>
+
+</body>
+</html>
